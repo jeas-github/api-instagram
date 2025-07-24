@@ -5,7 +5,6 @@
 -  NodeJS
 -  ExpressJS
 -  MySQL
--
 
 ### Recursos
 
@@ -16,9 +15,13 @@
 
 ### Estrutura dos Dados
 
-```mermaid
+````mermaid
 classDiagram
     Usuario --> Post: OneToMany
+    Usuario --> Comentario: OneToMany
+    Post --> Comentario: OneToMany
+    Post --> Curtida: OneToMany
+    Usuario --> Curtida: OneToMany
 
     class Usuario {
         + id
@@ -41,4 +44,20 @@ classDiagram
         + criado_em
         + atualizado_em?
     }
-```
+
+    class Comentario {
+        + id
+        + usuario_id
+        + post_id
+        + conteudo
+        + criado_em
+    }
+
+    class Curtida {
+        + id
+        + id_post
+        + id_usuario
+        + criado_em
+    }
+    ```
+````
